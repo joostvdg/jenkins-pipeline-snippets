@@ -6,15 +6,15 @@ pipeline {
                 echo 'Init man, does what ever an init can'
             }
         }
-        stage('Pipeline') {
+        stage('Custom Build Step') {
             when {
                 expression {
-                    def exists =  fileExists 'stage-snippet.groovy'
+                    def exists =  fileExists 'build-override.groovy'
                     return exists
                 }
             }
             steps {
-                evaluate(readTrusted('stage-snippet.groovy'))
+                evaluate(readTrusted('build-override.groovy'))
             }
             post {
                 success {
