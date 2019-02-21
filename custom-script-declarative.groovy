@@ -9,7 +9,7 @@ pipeline {
         stage('Pipeline') {
             when {
                 expression {
-                    def originalPipeline = readTrusted 'Jenkinsfile.cje'
+                    def originalPipeline = readTrusted 'stage-snippet.groovy'
                     return evaluate(originalPipeline)
                 }
             }

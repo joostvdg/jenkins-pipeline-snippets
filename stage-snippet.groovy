@@ -1,4 +1,2 @@
-steps {
-    echo "Hello!"
-    sh "env"
-}
+echo "Hello!"
+sh "env"
