@@ -1,5 +1,5 @@
 pipeline {
-    agent none
+    agent any
     stages {
         stage('Init') {
             steps {
@@ -9,12 +9,12 @@ pipeline {
         stage('Pipeline') {
             when {
                 expression {
-                    def originalPipeline = readTrusted 'stage-snippet.groovy'
-                    return evaluate(originalPipeline)
+                    def exists =  fileExists 'stage-snippet.groovy'
+                    return exists
                 }
             }
             steps {
-                echo 'Are done yet?'
+                evaluate(readTrusted('stage-snippet.groovy'))
             }
             post {
                 success {
