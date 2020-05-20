@@ -2,11 +2,11 @@ stage('Init') {
     echo 'Does what ever an init does'
 }
 
-def originalPipeline1 = readTrusted 'Jenkinsfile.example'
-evaluate originalPipeline1
+MY_NAME="test"
 
-def originalPipeline2 = readTrusted 'Jenkinsfile.example2'
-evaluate originalPipeline2
+def originalPipeline = readTrusted 'Jenkinsfile.example'
+evaluate originalPipeline
+
 
 stage('Cleanup') {
     echo 'Doing some cleanup'
